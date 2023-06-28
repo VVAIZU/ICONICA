@@ -36,6 +36,7 @@ export default function Nav() {
             )}
             <Link href={'/login'}>Login</Link>
             <Link href={'/register'}>Register</Link>
+            <Link href={'/cart'}>Cart {cartItem.length}</Link>
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import styles from '../styles/Home.module.css'
-import NavBar from './components/NavBar'
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Link from "next/link";

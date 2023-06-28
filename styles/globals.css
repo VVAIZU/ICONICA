@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 input, textarea{
   @apply border border-gray-300 rounded-md px-1 w-full; 
   @apply mb-2;

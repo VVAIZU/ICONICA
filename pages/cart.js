@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./components/NavBar";
 import Layout from "./components/Layout";
 import { useRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
