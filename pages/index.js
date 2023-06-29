@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import styles from "../styles/Main.module.css";
 import axios from "axios"
 import Link from "next/link";
@@ -20,6 +20,7 @@ import { EffectCards } from "swiper";
 export default function Home() {
   const [user, setUser] = useState('');
   const [products, setProducts] = useState([]);
+  const productListRef = useRef(null);
 
   useEffect(() => {
     getUser();
@@ -49,8 +50,13 @@ export default function Home() {
   // <h2 className="text-3xl font-bold mb-4">ICONICA - LOFT FURNITURE</h2>
   // <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
 
+  const scrollToProductList = () => {
+    if (productListRef.current) {
+      productListRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-  return <Layout>
+  return <Layout scrollToProductList={scrollToProductList}>
     <div className={styles.maincontainer}>
       <div className={styles.container}>
         <div className={styles.leftSection}>
@@ -63,18 +69,24 @@ export default function Home() {
           <div className={styles.bottomSection}>
           </div>
         </div>
-        <Swiper className={styles.mySwiper} effect={"cards"} grabCursor={true} modules={[EffectCards]}>
-          {products.map((product) => (
-            <SwiperSlide className={styles.swiper_slide} key={product.id}>
-              <div>{product.ptitle}</div>
-              <p>{product.pdesc}</p>
-              <p>{product.category}</p>
-              <Link className={styles.button} href={`/${product.id}`}>SeeMore</Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className={styles.rightSection}>
+          <Swiper className={styles.mySwiper} effect={"cards"} grabCursor={true} modules={[EffectCards]}>
+            {products.map((product) => (
+              <SwiperSlide className={styles.swiper_slide} key={product.id}>
+                <div>{product.ptitle}</div>
+                <p>{product.pdesc}</p>
+                <p>{product.category}</p>
+                <Link className={styles.button} href={`/${product.id}`}>SeeMore</Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
-      <ProductList></ProductList>
+      <div className={styles.container}>
+        <div ref={productListRef}>
+          <ProductList></ProductList>
+        </div>
+      </div>
     </div>
     {/* <div className={styles.top}>
       <h1>Products</h1>

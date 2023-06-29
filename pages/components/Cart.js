@@ -21,6 +21,7 @@ const Cart = () => {
         //     window.location = res.data.sessionURL
         // })
     }
+
     const removeFromCart = (productId) => {
         setCartItem((prevCartItem) => prevCartItem.filter((item) => item.id !== productId));
     };
@@ -33,7 +34,7 @@ const Cart = () => {
                     <h1>Your Cart is Empty</h1>
                 ) : (
                     cartItem.map((item) => (
-                        <CartList key={item.id} data={item} removeFromCart={removeFromCart} />
+                        <CartList key={item.id} data={item} removeFromCart={removeFromCart} /> 
                     ))
                 )}
             </div>

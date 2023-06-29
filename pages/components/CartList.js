@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from '../../styles/Cart.module.css';
 
-const CartList = ({ data }) => {
-    const { ptitle, pdesc, pprice } = data
+const CartList = ({ data, removeFromCart }) => {
+    const { ptitle, pdsc, pprice, id } = data
 
     return (
         <div className={styles.item}>

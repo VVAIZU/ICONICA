@@ -1,28 +1,30 @@
 .maincontainer {
     background-color: #e9e9e9;
+
 }
 
 .container {
     position: relative;
     display: flex;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    width: 100%;
+    height: 100vh;
 }
 
 .leftSection {
-    padding: 20px;
-    margin: 100px 200px 20px 200px;
+    /* padding: 10px; */
+    margin: 300px 200px 0px 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 100px;
+    width: 100%;
 }
 
 .rightSection {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-end; */
-    width: 100%;
+    padding: 130px;
+    margin: 100px 200px 20px 200px;
+
 }
 
 .productCard {
@@ -34,7 +36,7 @@
 .bottomSection {
     background-image: url('/logosite.png');
     position: absolute;
-    margin-top: 100px;
+    margin-top: 460px;
     margin-left: -200px;
     width: 2800px;
     height: 450px;
@@ -64,7 +66,7 @@
     color: #fff;
 }
 
-.button{
+.button {
     width: 100px;
     padding: 10px;
     margin-top: 50px;

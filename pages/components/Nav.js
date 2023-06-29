@@ -10,9 +10,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import styles from '../../styles/NavBar.module.css';
 import Cart from "./Cart";
 
-export default function Nav() {
+const Nav = ({ scrollToProductList }) => {
     const [cartItem] = useRecoilState(cartState)
-    const [ open, setOpen ] = useState(false);
+    const [open, setOpen] = useState(false);
     const [user, setUser] = useState('');
     const inactiveLink = "flex-col gap-2 p-1";
     const activeLink = inactiveLink + " bg-white text-blue-900 rounded-1-lg";
@@ -43,6 +43,9 @@ export default function Nav() {
                         <Link className={styles.link} href='/'>HOME</Link>
                     </div>
                     <div className={styles.item}>
+                        <button className={styles.button} onClick={scrollToProductList}>PRODUCTS</button>
+                    </div>
+                    <div className={styles.item}>
                         {user.role === 'admin' && (
                             <Link className={styles.link} href='/adminPanel'>ADMIN PANEL</Link>
                         )}
@@ -57,7 +60,7 @@ export default function Nav() {
                     </div>
                 </div>
             </div>
-            {open && <Cart/>}
+            {open && <Cart />}
         </div>
         // <nav>
         //     <div className={`${styles.innerWidth} 
@@ -76,3 +79,5 @@ export default function Nav() {
         // </nav>
     );
 }
+
+export default Nav;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "./components/Layout";
 import axios from "axios";
+import Link from "next/link";
 
 export default function Login() {
     const [loginUsername, setLoginUsername ] = useState('');
@@ -30,6 +31,7 @@ export default function Login() {
                     <input type="password" name="password" placeholder="password" onChange={e => setLoginPassword(e.target.value)}></input>
                     <button onClick={login}>login</button>
                 </div>
+                <Link href="/register">REGISTER</Link>
             </div>
         </Layout>
     )
