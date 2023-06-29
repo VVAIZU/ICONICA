@@ -1,14 +1,14 @@
 import Nav from "./Nav.js"
+import Footer from "./Footer.js"
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
     return (
-        //bg-blue-900 min-h-screen flex
-        //bg-white flex-grow mt-2 mr-2 mb-2 rounded-lg p-4
-        <div className="">
+        <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
             <Nav />
-            <div className="">
+            <div style={{ flex: 1 }}>
                 {children}
             </div>
-        </div> 
-    )
+            <Footer />
+        </div>
+    );
 }

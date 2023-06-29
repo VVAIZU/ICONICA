@@ -3,11 +3,32 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductCard from './components/ProductCard';
 import Layout from './components/Layout';
+import { useRecoilState } from "recoil";
+import { cartState } from '../atoms/cartState';
+import { Toast, toast } from 'react-hot-toast';
+import styles from '../styles/ProductPage.module.css';
 
 const ProductPage = () => {
   const router = useRouter();
   const { productId } = router.query;
   const [product, setProduct] = useState(null);
+
+
+  const [cartItem, setCartItem] = useRecoilState(cartState);
+
+  const addItemToCart = () => {
+    if (cartItem.findIndex(pro => pro.id === product.id) === -1) {
+      setCartItem(prevState => [...prevState, product])
+    } else {
+      setCartItem(prevState => {
+        return prevState.map((item) => {
+          return item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        })
+      })
+    }
+
+    toast(`${product.ptitle} added to cart`)
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,7 +51,32 @@ const ProductPage = () => {
 
   return (
     <Layout>
-      <ProductCard product={product} />
+      <div className={styles.product}>
+        <div className={styles.left}>
+          <div className={styles.images}>
+            <div className={styles.img}>image1</div>
+            <div className={styles.img}>image2</div>
+          </div>
+          <div className={styles.mainImg}>Image Main</div>
+        </div>
+        <div className={styles.right}>
+          <h1>{product.ptitle}</h1>
+          <p className={styles.desc}>{product.pdesc}</p>
+          <p className={styles.price}>₽ {product.pprice} </p>
+          <button className={styles.button} onClick={addItemToCart}>Add to cart</button>
+          <div className={styles.info}>
+            <span>Vendor: </span>
+            <span>Product type: </span>
+            <span>Tag: </span>
+          </div>
+          <hr/>
+          <div className={styles.info}>
+            <span>ADDITIONAL INFORMATION</span>
+            <hr className={styles.myhr}/>
+            <span>FAQ</span>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

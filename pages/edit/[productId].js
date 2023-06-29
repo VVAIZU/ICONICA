@@ -58,7 +58,7 @@ function EditProduct() {
                     name="pprice"
                     onChange={e => setNewProductPrice(e.target.value)}
                 />
-                <button type="button" onClick={updateProduct} className="btn-primary">
+                <button type="button" onClick={updateProduct}>
                     Save
                 </button>
             </form>

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useRecoilState } from "recoil";
+import styles from '../../styles/ProductCard.module.css';
 import Link from 'next/link';
 import { cartState } from '../../atoms/cartState';
 import { Toast, toast } from 'react-hot-toast';
 
 const ProductCard = ({ product }) => {
+
     const [cartItem, setCartItem] = useRecoilState(cartState);
 
     const addItemToCart = () => {
@@ -23,13 +25,13 @@ const ProductCard = ({ product }) => {
 
 
     return (
-        <div className='flex-col gap-2 p-1 bg-white pt-6 pb-4 shadow-2x1'>
-            <div className='items-center'>
+        <div className={styles.card}>
+            <div>
                 <h2>{product.ptitle}</h2>
                 <p>{product.pdesc}</p>
-                <p>{product.pprice}</p>
-                <Link className="btn-primary" href={`/${product.id}`}>SeeMore</Link>
-                <button className="btn-primary" onClick={addItemToCart}>Add to cart</button>
+                <p className={styles.price}>{product.pprice}</p>
+                <Link href={`/${product.id}`}>SeeMore</Link>
+                <button onClick={addItemToCart}>Add to cart</button>
             </div>
         </div>
     );

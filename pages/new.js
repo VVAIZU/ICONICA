@@ -42,7 +42,7 @@ export default function NewProduct() {
                 placeholder="pprice" 
                 name="pprice"
                 onChange={e => setProductPrice(e.target.value)}/>
-                <button onClick={addProduct} type="submit" className="btn-primary">Save</button>
+                <button onClick={addProduct} type="submit">Save</button>
             </form>
         </Layout>
     ); 

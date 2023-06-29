@@ -79,7 +79,7 @@ export default function adminPanel() {
 
     return <Layout>
         <h1>Products</h1>
-        <Link className="btn-primary" href={'/new'}>Add new product</Link>
+        <Link href={'/new'}>Add new product</Link>
         <div>
             <h1>Products</h1>
             <table>
@@ -101,10 +101,10 @@ export default function adminPanel() {
                             <td>{product.pdesc}</td>
                             <td>{product.pprice} ₽</td>
                             <td>
-                                <Link className="btn-primary" href={`edit/${product.id}`}>Edit</Link>
+                                <Link href={`edit/${product.id}`}>Edit</Link>
                             </td>
                             <td>
-                                <button className="btn-primary" onClick={() => handleDelete(product.id, product.ptitle)}>Delete</button>
+                                <button onClick={() => handleDelete(product.id, product.ptitle)}>Delete</button>
                             </td>
                             {/* Add more table cells as needed */}
                         </tr>
@@ -129,7 +129,7 @@ export default function adminPanel() {
                             <td>{user.username}</td>
                             <td>{user.role}</td>
                             <td>
-                                <button className="btn-primary" onClick={() => handleUpdateRole(user.id, user.role)}>Update Role</button>
+                                <button onClick={() => handleUpdateRole(user.id, user.role)}>Update Role</button>
                             </td>
                             {/* <td>
                                 <Link className="btn-primary" href={`/${product.id}`}>Edit</Link>

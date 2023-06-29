@@ -1,9 +1,21 @@
-import styles from '../styles/Home.module.css'
 import { useState, useEffect } from "react"
+import styles from "../styles/Main.module.css";
 import axios from "axios"
 import Link from "next/link";
 import Layout from './components/Layout';
 import ProductCard from './components/ProductCard';
+import { motion } from 'framer-motion';
+import ProductList from "./components/ProductList";
+import { navVariants, slideIn, staggerContainer, textVariant } from '../utils/motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import "swiper/css/effect-cards";
+
+import { EffectCards } from "swiper";
 
 export default function Home() {
   const [user, setUser] = useState('');
@@ -32,10 +44,60 @@ export default function Home() {
         console.log(err);
       });
   };
+  // <h2 className="text-3xl font-bold mb-4">ICONICA - LOFT FURNITURE</h2>
+  // <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
 
 
   return <Layout>
+    <div className={styles.container}>
+      <div className={styles.leftSection}>
+        <motion.nav variants={navVariants} initial="hidden"
+          whileInView="show"
+          className={`${styles.xPaddings} py-8 relative`}>
+          <h2>ICONICA - LOFT FURNITURE</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
+        </motion.nav>
+      </div>
+      <Swiper
+        className={styles.mySwiper}
+        effect={"cards"}
+        grabCursor={true}
+        modules={[EffectCards]}
+      >
+        <SwiperSlide className={styles.swiper_slide}>Slide 1</SwiperSlide>
+        <SwiperSlide className={styles.swiper_slide}>Slide 2</SwiperSlide>
+        <SwiperSlide className={styles.swiper_slide}>Slide 3</SwiperSlide>
+        <SwiperSlide className={styles.swiper_slide}>Slide 4</SwiperSlide>
+      </Swiper>
+    </div>
+    <ProductList></ProductList>
+    {/* <div className={styles.top}>
+      <h1>Products</h1>
+    </div>
+    <div>
+      {products.map((product) => (
+        <div>
+          <ProductCard product={product} />
+          <td>{product.ptitle}</td>
+          <td>{product.pprice} ₽</td>
+          <td>
+            <Link href={`/${product.id}`}>SeeMore</Link>
+          </td>
+        </div>
+      ))}
+    </div> 
     <div className="text-blue-900 flex justify-beetwen">
+      <div className='flex justify-center items-center flex-col relative z-10'>
+        <motion.nav variants={navVariants} initial="hidden"
+          whileInView="show"
+          className={`${styles.xPaddings} py-8 relative`}>
+          <h2 className="font-extrabold text-[24px] 
+                leading-[30px]">ICONICA - LOFT FURNITURE</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
+        </motion.nav>
+      </div>
+    </div>
+    <div>
       <div>
         <h1>Home</h1>
         <h1>Logged in user: {user.username}</h1>
@@ -55,9 +117,9 @@ export default function Home() {
           <td>{product.pprice} ₽</td>
           <td>
             <Link className="btn-primary" href={`/${product.id}`}>SeeMore</Link>
-          </td> */}
+          </td> 
         </div>
       ))}
-    </div>
+    </div> */}
   </Layout>
 }

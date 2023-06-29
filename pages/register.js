@@ -28,7 +28,7 @@ export default function Register() {
                     <h1>Register</h1>
                     <input type="text" name="username" placeholder="username" onChange={e => setRegisterUsername(e.target.value)}></input>
                     <input type="password" name="password" placeholder="password" onChange={e => setRegisterPassword(e.target.value)}></input>
-                    <button className="btn-primary" onClick={register}>register</button>
+                    <button onClick={register}>register</button>
                 </div>
             </div>
         </Layout>
