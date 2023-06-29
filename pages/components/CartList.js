@@ -8,6 +8,9 @@ const CartList = ({ data }) => {
         <div className={styles.item}>
             <div>{ptitle}</div>
             <div className={styles.price}>Price: {pprice}</div>
+            <button className={styles.removeButton} onClick={() => removeFromCart(id)}>
+                Remove
+            </button>
         </div>
     );
 };

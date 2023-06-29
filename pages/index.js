@@ -38,39 +38,44 @@ export default function Home() {
   const getProd = () => {
     axios.get('http://localhost:3001/getProducts')
       .then(res => {
-        setProducts(res.data);
+        const specialProducts = res.data.filter(product => product.special === 1);
+        setProducts(specialProducts);
       })
       .catch(err => {
         console.log(err);
       });
   };
+
   // <h2 className="text-3xl font-bold mb-4">ICONICA - LOFT FURNITURE</h2>
   // <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
 
 
   return <Layout>
-    <div className={styles.container}>
-      <div className={styles.leftSection}>
-        <motion.nav variants={navVariants} initial="hidden"
-          whileInView="show"
-          className={`${styles.xPaddings} py-8 relative`}>
-          <h2>ICONICA - LOFT FURNITURE</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
-        </motion.nav>
+    <div className={styles.maincontainer}>
+      <div className={styles.container}>
+        <div className={styles.leftSection}>
+          <motion.nav variants={navVariants} initial="hidden"
+            whileInView="show"
+            className={`${styles.xPaddings} py-8 relative`}>
+            <h2>ICONICA - LOFT FURNITURE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus, ex semper tempor vestibulum, </p>
+          </motion.nav>
+          <div className={styles.bottomSection}>
+          </div>
+        </div>
+        <Swiper className={styles.mySwiper} effect={"cards"} grabCursor={true} modules={[EffectCards]}>
+          {products.map((product) => (
+            <SwiperSlide className={styles.swiper_slide} key={product.id}>
+              <div>{product.ptitle}</div>
+              <p>{product.pdesc}</p>
+              <p>{product.category}</p>
+              <Link className={styles.button} href={`/${product.id}`}>SeeMore</Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-      <Swiper
-        className={styles.mySwiper}
-        effect={"cards"}
-        grabCursor={true}
-        modules={[EffectCards]}
-      >
-        <SwiperSlide className={styles.swiper_slide}>Slide 1</SwiperSlide>
-        <SwiperSlide className={styles.swiper_slide}>Slide 2</SwiperSlide>
-        <SwiperSlide className={styles.swiper_slide}>Slide 3</SwiperSlide>
-        <SwiperSlide className={styles.swiper_slide}>Slide 4</SwiperSlide>
-      </Swiper>
+      <ProductList></ProductList>
     </div>
-    <ProductList></ProductList>
     {/* <div className={styles.top}>
       <h1>Products</h1>
     </div>

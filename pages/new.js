@@ -3,9 +3,12 @@ import Layout from "./components/Layout";
 import axios from "axios";
 
 export default function NewProduct() {
-    const [ registerProductTitle, setProductTitle ] = useState('');
-    const [ registerProductDesc, setProductDesc ] = useState('');
-    const [ registerProductPrice, setProductPrice ] = useState('');
+    const [registerProductTitle, setProductTitle] = useState('');
+    const [registerProductDesc, setProductDesc] = useState('');
+    const [registerProductPrice, setProductPrice] = useState('');
+    const [registerProductCat, setProductCat] = useState('');
+    const [registerProductSpecial, setProductSpecial] = useState('');
+
 
     const addProduct = () => {
         axios({
@@ -13,14 +16,16 @@ export default function NewProduct() {
             data: {
                 ptitle: registerProductTitle,
                 pdesc: registerProductDesc,
-                pprice: registerProductPrice
+                pprice: registerProductPrice,
+                category: registerProductCat,
+                special: registerProductSpecial
             },
             withCredentials: true,
             url: "http://localhost:3001/new"
         }).then((res) => {
-            window.location.href='/';
+            window.location.href = '/';
         })
-        .catch((err) => console.log(err));
+            .catch((err) => console.log(err));
     }
 
     return (
@@ -28,22 +33,31 @@ export default function NewProduct() {
             <form>
                 <h1>New Product</h1>
                 <label>Product name</label>
-                <input type="text" 
-                placeholder="ptitle" 
-                name="ptitle"
-                onChange={e => setProductTitle(e.target.value)}/>
+                <input type="text"
+                    placeholder="ptitle"
+                    name="ptitle"
+                    onChange={e => setProductTitle(e.target.value)} />
                 <label>Description</label>
-                <textarea type="text" 
-                placeholder="pdesc" 
-                name="pdesc"
-                onChange={e => setProductDesc(e.target.value)}/>
+                <textarea type="text"
+                    placeholder="pdesc"
+                    name="pdesc"
+                    onChange={e => setProductDesc(e.target.value)} />
                 <label>Price</label>
-                <input type="number" 
-                placeholder="pprice" 
-                name="pprice"
-                onChange={e => setProductPrice(e.target.value)}/>
+                <input type="number"
+                    placeholder="pprice"
+                    name="pprice"
+                    onChange={e => setProductPrice(e.target.value)} />
+                <textarea type="text"
+                    placeholder="category"
+                    name="category"
+                    onChange={e => setProductCat(e.target.value)} />
+                <textarea type="text"
+                    placeholder="special"
+                    name="spacial"
+                    onChange={e => setProductSpecial(e.target.value)} />
+                <label>Price</label>
                 <button onClick={addProduct} type="submit">Save</button>
             </form>
         </Layout>
-    ); 
+    );
 }

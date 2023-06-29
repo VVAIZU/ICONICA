@@ -29,6 +29,7 @@ const ProductCard = ({ product }) => {
             <div>
                 <h2>{product.ptitle}</h2>
                 <p>{product.pdesc}</p>
+                <p>{product.category}</p>
                 <p className={styles.price}>{product.pprice}</p>
                 <Link href={`/${product.id}`}>SeeMore</Link>
                 <button onClick={addItemToCart}>Add to cart</button>

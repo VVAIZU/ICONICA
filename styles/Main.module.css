@@ -1,71 +1,22 @@
-.container {
+.maincontainer {
     background-color: #e9e9e9;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.leftSection {
+    padding: 20px;
+    margin: 100px 200px 20px 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-
-.leftSection {
-    padding: 20px;
-    display: flex;
-}
-
-.mySwiper {
-    width: 240px;
-    height: 320px;
-    /* или другое значение, чтобы Swiper занимал нужное пространство */
-}
-
-.swiper_slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  .swiper_slide:nth-child(1n) {
-    background-color: red;
-  }
-  
-  .swiper_slide:nth-child(2n) {
-    background-color: rgb(0, 140, 255);
-  }
-  
-  .swiper_slide:nth-child(3n) {
-    background-color: rgb(10, 184, 111);
-  }
-  
-  .swiper_slide:nth-child(4n) {
-    background-color: rgb(211, 122, 7);
-  }
-  
-  .swiper_slide:nth-child(5n) {
-    background-color: rgb(118, 163, 12);
-  }
-  
-  .swiper_slide:nth-child(6n) {
-    background-color: rgb(180, 10, 47);
-  }
-  
-  .swiper_slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
-  }
-  
-  .swiper_slide:nth-child(8n) {
-    background-color: rgb(0, 68, 255);
-  }
-  
-  .swiper_slide:nth-child(9n) {
-    background-color: rgb(218, 12, 218);
-  }
-  
-  .swiper_slide:nth-child(10n) {
-    background-color: rgb(54, 94, 77);
-  }
 
 .rightSection {
     /* display: flex;
@@ -81,7 +32,89 @@
 }
 
 .bottomSection {
-    background-image: url('../pages/images/logosite.png');
+    background-image: url('/logosite.png');
+    position: absolute;
+    margin-top: 100px;
+    margin-left: -200px;
+    width: 2800px;
+    height: 450px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-size: cover;
-    height: 200px;
+    background-repeat: no-repeat;
+    /* z-index: -1; */
+}
+
+.mySwiper {
+    width: 240px;
+    height: 320px;
+    /* или другое значение, чтобы Swiper занимал нужное пространство */
+}
+
+.swiper_slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 18px; */
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.button{
+    width: 100px;
+    padding: 10px;
+    margin-top: 50px;
+    background-color: #e9e9e9;
+    color: #272727;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.swiper_slide:nth-child(1n) {
+    background-color: #272727;
+}
+
+.swiper_slide:nth-child(2n) {
+    background-color: #717171;
+}
+
+.swiper_slide:nth-child(3n) {
+    background-color: #272727;
+}
+
+.swiper_slide:nth-child(4n) {
+    background-color: #717171;
+}
+
+.swiper_slide:nth-child(5n) {
+    background-color: #272727;
+}
+
+.swiper_slide:nth-child(6n) {
+    background-color: #717171;
+}
+
+.swiper_slide:nth-child(7n) {
+    background-color: #272727;
+}
+
+.swiper_slide:nth-child(8n) {
+    background-color: #717171;
+}
+
+.swiper_slide:nth-child(9n) {
+    background-color: #272727;
+}
+
+.swiper_slide:nth-child(10n) {
+    background-color: #717171;
 }

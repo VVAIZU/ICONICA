@@ -21,14 +21,21 @@ const Cart = () => {
         //     window.location = res.data.sessionURL
         // })
     }
+    const removeFromCart = (productId) => {
+        setCartItem((prevCartItem) => prevCartItem.filter((item) => item.id !== productId));
+    };
 
     return (
         <div className={styles.cart}>
             <h1 className={styles.myh}>Products in your cart</h1>
             <div>
-                {cartItem.length <= 0
-                    ? <h1>Your Cart is Empty</h1>
-                    : cartItem.map(item => <CartList key={item.id} data={item} />)}
+                {cartItem.length <= 0 ? (
+                    <h1>Your Cart is Empty</h1>
+                ) : (
+                    cartItem.map((item) => (
+                        <CartList key={item.id} data={item} removeFromCart={removeFromCart} />
+                    ))
+                )}
             </div>
 
             {cartItem.length > 0 && (<div>

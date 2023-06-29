@@ -155,11 +155,13 @@ app.put('/editproduct', (req, res) => {
     const ptitle = req.body.ptitle;
     const pdesc = req.body.pdesc;
     const pprice = req.body.pprice;
+    const category = req.body.category;
+    const special = req.body.special;
     const productId = req.body.productId;
 
-    const query = `UPDATE login_register.product SET ptitle = ?, pdesc = ?, pprice = ? WHERE id = ?`;
+    const query = `UPDATE login_register.product SET ptitle = ?, pdesc = ?, pprice = ?, category = ?, special = ? WHERE id = ?`;
 
-    const values = [ptitle, pdesc, pprice, productId];
+    const values = [ptitle, pdesc, pprice, category, special, productId];
     console.log("PR ID: " + productId);
     db.query(query, values, (error, results) => {
         if (error) {
@@ -195,10 +197,12 @@ app.post('/new', (req, res) => {
     const ptitle = req.body.ptitle;
     const pdesc = req.body.pdesc;
     const pprice = req.body.pprice;
+    const category = req.body.category;
+    const special = req.body.special;
 
-    const query = "INSERT INTO login_register.product (`ptitle`, `pdesc`, `pprice`) VALUES (?,?,?)"
+    const query = "INSERT INTO login_register.product (`ptitle`, `pdesc`, `pprice`, `category`, `special`) VALUES (?,?,?,?,?)"
 
-    db.query(query, [ptitle, pdesc, pprice], (err, result) => {
+    db.query(query, [ptitle, pdesc, pprice, category, special], (err, result) => {
         if (err) { throw err; }
         res.send({ message: "Product added to db" })
     });

@@ -9,6 +9,8 @@ function EditProduct() {
     const [editProductTitle, setNewProductTitle] = useState('');
     const [editProductDesc, setNewProductDesc] = useState('');
     const [editProductPrice, setNewProductPrice] = useState('');
+    const [editProductCategory, setNewProductCategory] = useState('');
+    const [registerProductSpecial, setProductSpecial] = useState('');
 
     const updateProduct = async () => {
         axios({
@@ -17,6 +19,8 @@ function EditProduct() {
                 ptitle: editProductTitle,
                 pdesc: editProductDesc,
                 pprice: editProductPrice,
+                category: editProductCategory,
+                special: registerProductSpecial,
                 productId: productId
             },
             withCredentials: true,
@@ -57,6 +61,18 @@ function EditProduct() {
                     placeholder="Product Price"
                     name="pprice"
                     onChange={e => setNewProductPrice(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Product category"
+                    name="category"
+                    onChange={e => setNewProductCategory(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Product special"
+                    name="special"
+                    onChange={e => setNewProductCategory(e.target.value)}
                 />
                 <button type="button" onClick={updateProduct}>
                     Save
